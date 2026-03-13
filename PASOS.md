@@ -16,6 +16,17 @@ Creación del proyecto.
 
 ### Criterio 2
 Creación de rutas y componentes.
+// Componente FIJO HEADER en carpeta componentes ✅
+
+    // Componentes VISUALES en páginas: ✅
+        - USER-LIST
+        - USER-VIEW
+        - USER-FORM
+
+            - Componente HIJO OPCIONAL EN EL FIJO USER-CARD ✅
+
+// CREACION Y CONFIGURACION DEL SISTEMA DE RUTAS EN APP-routing.module.ts ✅
+
 
 ### Criterio 3
 Creación de interfaces y servicios para conectar al api.
