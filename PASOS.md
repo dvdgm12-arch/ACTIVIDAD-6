@@ -30,6 +30,11 @@ Creación de rutas y componentes.
 
 ### Criterio 3
 Creación de interfaces y servicios para conectar al api.
+//crear interfaz interfaces/user.interface.ts
+  //definir interfaz con su logica y su contrato
+
+//crear el servicio que usara httpclient para las peticiones ng g s services/users
+
 
 ### Criterio 4
 Vista home con la carga de todos los usuarios.
