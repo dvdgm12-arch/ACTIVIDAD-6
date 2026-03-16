@@ -13,7 +13,7 @@ export class UsersService {
      /*delete(id: string) { /* DELETE /users/id */ }
 //}
 
-@Injectable({
+/*@Injectable({
     providedIn: 'root'
 })
 export class UsersService {
@@ -37,5 +37,43 @@ export class UsersService {
     delete(id: string) {
         console.log('Borrando usuario...');
     }
+}*/
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UsersService {
+  private httpClient = inject(HttpClient);
+  private baseUrl: string = 'https://peticiones.online/api/users';
+
+  // Devolvemos Observables directamente
+  getAll(): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl);
+  }
+
+  getById(id: string): Observable<User> {
+    return this.httpClient.get<User>(`${this.baseUrl}/${id}`);
+  }
+
+  insert(user: User): Observable<User> {
+    return this.httpClient.post<User>(this.baseUrl, user);
+  }
+
+  update(user: User): Observable<User> {
+    return this.httpClient.put<User>(`${this.baseUrl}/${user._id}`, user);
+  }
+
+  delete(id: string): Observable<any> {
+    return this.httpClient.delete<any>(`${this.baseUrl}/${id}`);
+  }
 }
 
+// En el componente
+users = signal<User[]>([]); // Creamos una Signal
+
+async ngOnInit() {
+  // Llamamos al servicio y actualizamos la Signal
+  this.usersService.getAll().subscribe((data: any) => {
+    this.users.set(data.results); // 'set' actualiza el valor y la pantalla reacciona
+  });
+}
