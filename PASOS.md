@@ -45,11 +45,19 @@ Creación de interfaces y servicios para conectar al api.
 
 ### Criterio 4
 Vista home con la carga de todos los usuarios.
+<<<<<<< HEAD
 //Chasis basico .html ✅
 
 ### Criterio 5
 Vista detalle del usuario con todos sus datos y los botones correspondientes.
 //Chasis basico .html ✅
+=======
+// Maquetación básica ✅
+
+### Criterio 5
+Vista detalle del usuario con todos sus datos y los botones correspondientes.
+// Maquetación básica ✅
+>>>>>>> featured-criterio3interfacesyservicios
 
 ### Criterio 6
 Vista formulario de nuevo registro de usuario y su funcionalidad conectada con el api.
