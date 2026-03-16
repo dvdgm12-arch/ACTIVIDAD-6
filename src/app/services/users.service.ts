@@ -66,7 +66,6 @@ export class UsersService {
   delete(id: string): Observable<any> {
     return this.httpClient.delete<any>(`${this.baseUrl}/${id}`);
   }
-<<<<<<< HEAD
 }
 
 // En el componente
@@ -77,8 +76,6 @@ async ngOnInit() {
   this.usersService.getAll().subscribe((data: any) => {
     this.users.set(data.results); // 'set' actualiza el valor y la pantalla reacciona
   });
-=======
->>>>>>> featured-criterio3interfacesyservicios
 }
 
 // En el componente
