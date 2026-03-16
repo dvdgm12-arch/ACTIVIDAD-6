@@ -7,10 +7,10 @@ export class UsersService {
     constructor(private http: HttpClient) { }
 
     getAll() { // GET /users }
-    /*getById(id: string) { /*GET /users/id */ }
-     /*insert(user: User) { /* POST /users */ }
-    /* update(user: User) { /* PUT /users/id */ }
-     /*delete(id: string) { /* DELETE /users/id */ }
+    /*getById(id: string) { /*GET /users/id  } */
+     /*insert(user: User) { /* POST /users  } */
+    /* update(user: User) { /* PUT /users/id  } */
+     /*delete(id: string) { /* DELETE /users/id  } */
 //}
 
 @Injectable({
