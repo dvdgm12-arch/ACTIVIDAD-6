@@ -30,12 +30,26 @@ Creación de rutas y componentes.
 
 ### Criterio 3
 Creación de interfaces y servicios para conectar al api.
+//crear interfaz interfaces/user.interface.ts ✅
+
+  //definir interfaz con su logica y su contrato ✅
+
+//crear el servicio que usara httpclient para las peticiones ng g s services/users ✅
+
+  // definir el servicio ✅
+
+// Añadir el import de Provide HTTP en app.config.ts ✅
+
+// definir los metodos del servicio para conectar con la API ⚠️
+
 
 ### Criterio 4
 Vista home con la carga de todos los usuarios.
+//Chasis basico .html ✅
 
 ### Criterio 5
 Vista detalle del usuario con todos sus datos y los botones correspondientes.
+//Chasis basico .html ✅
 
 ### Criterio 6
 Vista formulario de nuevo registro de usuario y su funcionalidad conectada con el api.
