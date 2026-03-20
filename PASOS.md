@@ -71,3 +71,14 @@ Actualización del usuario reutilizando el componente formulario del registro y 
 // LOGICA CRITERIO 7 COMPLETADA 🏁
 
 
+### CORRECCIÓN DE BUGS / DECOR
+
+- GITHUB ACTIVIDAD 6
+
+- Actividad 6 id alfanumerico cambiar
+
+- DAR MENSAJES EXITO Y REQUEST/RESPONSE ERROR iguales a la API
+
+- Si genero o borro un usuario que aparezca en el array de la consola... sino no vale
+
+- SWEET ALERT PARA NEWUSER ACTUALIZAR Y BORRAR
