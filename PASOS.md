@@ -68,6 +68,6 @@ Actualización del usuario reutilizando el componente formulario del registro y 
 
 // Maquetación formulario en HTML ✅
 
-// LOGICA CRITERIO 7 PENDIENTE 🛑
+// LOGICA CRITERIO 7 COMPLETADA 🏁
 
 
