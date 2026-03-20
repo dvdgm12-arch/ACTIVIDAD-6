@@ -47,26 +47,27 @@ Creación de interfaces y servicios para conectar al api.
 Vista home con la carga de todos los usuarios.
 //Chasis basico .html ✅
 
+// LOGICA CRITERIO 4 COMPLETADA 🏁
+
 ### Criterio 5
 Vista detalle del usuario con todos sus datos y los botones correspondientes.
 //Chasis basico .html ✅
 // Maquetación básica ✅
 
-### Criterio 5
-Vista detalle del usuario con todos sus datos y los botones correspondientes.
-
-// Maquetación básica ✅
-
-// Logica servicio ✅
+// LOGICA CRITERIO 4 PENDIENTE 🛑
 
 ### Criterio 6
 Vista formulario de nuevo registro de usuario y su funcionalidad conectada con el api.
 
 // Maquetación formulario en HTML ✅
 
+// LOGICA CRITERIO 4 PENDIENTE 🛑
+
 ### Criterio 7
 Actualización del usuario reutilizando el componente formulario del registro y conectarlo correctamente con el api.
 
+// Maquetación formulario en HTML ✅
 
+// LOGICA CRITERIO 4 PENDIENTE 🛑
 
 

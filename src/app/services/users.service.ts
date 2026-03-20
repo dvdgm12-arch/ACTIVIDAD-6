@@ -11,11 +11,11 @@ export class UsersService {
   private baseUrl = 'https://peticiones.online/api/users';
 
  
-  getAll(): Promise<IUserResponse> {
+   getAll(): Promise<IUserResponse> {
     return firstValueFrom(this.httpClient.get<IUserResponse>(this.baseUrl));
   }
 
-  getById(id: string): Promise<IUser> {
+  async getById(id: string): Promise<IUser> {
     return firstValueFrom(this.httpClient.get<IUser>(`${this.baseUrl}/${id}`));
   }
 
@@ -27,7 +27,7 @@ export class UsersService {
     return firstValueFrom(this.httpClient.put<IUser>(`${this.baseUrl}/${user.id}`, user));
   }
 
-  delete(id: string): Promise<IUser> {
+  async delete(id: string): Promise<IUser> {
     return firstValueFrom(this.httpClient.delete<IUser>(`${this.baseUrl}/${id}`));
   }
 }
