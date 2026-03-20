@@ -54,10 +54,15 @@ Vista detalle del usuario con todos sus datos y los botones correspondientes.
 
 ### Criterio 5
 Vista detalle del usuario con todos sus datos y los botones correspondientes.
+
 // Maquetación básica ✅
+
+// Logica servicio ✅
 
 ### Criterio 6
 Vista formulario de nuevo registro de usuario y su funcionalidad conectada con el api.
+
+// Maquetación formulario en HTML ✅
 
 ### Criterio 7
 Actualización del usuario reutilizando el componente formulario del registro y conectarlo correctamente con el api.
