@@ -31,4 +31,18 @@ export class UserListComponent implements OnInit {
       console.error('Error al conectar con la API:', error);
     }
   }
+
+  async borrarUsuario(id: string, nombre: string) {
+    if (confirm(`¿Seguro que quieres borrar a ${nombre}?`)) {
+      try {
+        await this.usersService.delete(id);
+        
+        this.arrUsers = this.arrUsers.filter(user => user._id !== id);
+        
+        alert('Usuario eliminado (Simulado)');
+      } catch (error) {
+        console.error('Error al borrar:', error);
+      }
+    }
+  }
 }

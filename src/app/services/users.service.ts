@@ -23,7 +23,7 @@ export class UsersService {
     return firstValueFrom(this.httpClient.post<IUser>(this.baseUrl, user));
   }
 
-  update(user: IUser): Promise<IUser> {
+  async update(user: IUser): Promise<IUser> {
     return firstValueFrom(this.httpClient.put<IUser>(`${this.baseUrl}/${user.id}`, user));
   }
 

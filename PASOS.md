@@ -54,20 +54,20 @@ Vista detalle del usuario con todos sus datos y los botones correspondientes.
 //Chasis basico .html ✅
 // Maquetación básica ✅
 
-// LOGICA CRITERIO 4 PENDIENTE 🛑
+// LOGICA CRITERIO 5 COMPLETADA 🏁
 
 ### Criterio 6
 Vista formulario de nuevo registro de usuario y su funcionalidad conectada con el api.
 
 // Maquetación formulario en HTML ✅
 
-// LOGICA CRITERIO 4 PENDIENTE 🛑
+// LOGICA CRITERIO 6 COMPLETADA 🏁
 
 ### Criterio 7
 Actualización del usuario reutilizando el componente formulario del registro y conectarlo correctamente con el api.
 
 // Maquetación formulario en HTML ✅
 
-// LOGICA CRITERIO 4 PENDIENTE 🛑
+// LOGICA CRITERIO 7 PENDIENTE 🛑
 
 
