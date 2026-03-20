@@ -40,7 +40,7 @@ Creación de interfaces y servicios para conectar al api.
 
 // Añadir el import de Provide HTTP en app.config.ts ✅
 
-// definir los metodos del servicio para conectar con la API ⚠️
+// definir los metodos del servicio para conectar con la API ✅
 
 
 ### Criterio 4
