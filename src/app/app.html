@@ -1,15 +1,41 @@
-<header>
-  <nav class="navbar navbar-dark bg-dark mb-4">
-    <div class="container">
-      <a class="navbar-brand" href="#">Users App</a>
-    </div>
-  </nav>
-</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-2">
+  <div class="container">
+    
+    <a class="navbar-brand d-flex align-items-center fw-bold" routerLink="/home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 100 100" class="me-2 rounded-circle bg-light p-1 shadow-sm">
+        <circle cx="50" cy="50" r="48" fill="#F8F9FA" />
+        <circle cx="50" cy="35" r="15" fill="#0DCAF0" />
+        <path d="M50 55 C25 55, 15 85, 15 100 L85 100 C85 85, 75 55, 50 55 Z" fill="#0DCAF0" />
+        <circle cx="25" cy="45" r="10" fill="#0DCAF0" opacity="0.7" />
+        <circle cx="75" cy="45" r="10" fill="#0DCAF0" opacity="0.7" />
+      </svg>
+      <span class="fs-4 text-white">USERSAPP</span>
+    </a>
 
-<main>
-  <router-outlet></router-outlet> 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <div class="d-flex gap-2">
+        
+        <button class="btn btn-outline-light px-3" routerLink="/home" routerLinkActive="active">
+          <i class="bi bi-house-door me-1"></i>HOME
+        </button>
+
+        <button class="btn btn-info text-dark fw-bold px-3" routerLink="/newuser" routerLinkActive="active">
+          <i class="bi bi-person-plus me-1"></i>REGISTRO DE USUARIO
+        </button>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container py-4 my-3">
+  <router-outlet></router-outlet>
 </main>
 
-<footer class="text-center mt-5 py-3 border-top">
-  <p>&copy; 2026 - Comunidad de Usuarios</p>
+<footer class="text-center py-4 mt-auto border-top text-muted bg-light">
+  <small>&copy; 2026 UsersApp - El HUB que conecta contigo 🌐 </small>
 </footer>
