@@ -1,1 +1,50 @@
-<p>user-form works!</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Registro de Usuarios</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" class="form-control" placeholder="Ej: David">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" placeholder="Ej: García">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" placeholder="nombre@ejemplo.com">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre de Usuario (Username)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">@</span>
+                                <input type="text" class="form-control" placeholder="david123">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">URL de la Imagen de Perfil</label>
+                            <input type="text" class="form-control" placeholder="https://mi-foto.jpg">
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" class="btn btn-secondary me-md-2" routerLink="/home">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Guardar Usuario</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
