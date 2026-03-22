@@ -75,9 +75,9 @@ Actualización del usuario reutilizando el componente formulario del registro y 
 
 - Actividad 6 id alfanumerico cambiar
 
-- DAR MENSAJES EXITO Y REQUEST/RESPONSE ERROR iguales a la API
+- DAR MENSAJES EXITO Y REQUEST/RESPONSE ERROR iguales a la API  ☑️
 
-- Si genero o borro un usuario que aparezca en el array de la consola... sino no vale
+- Si genero o borro un usuario que aparezca en el array de la consola... sino no vale ☑️
 
 - SWEET ALERT PARA NEWUSER ACTUALIZAR Y BORRAR ☑️
 

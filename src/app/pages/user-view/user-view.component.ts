@@ -24,9 +24,9 @@ export class UserViewComponent {
       try {
         const userData = await this.usersService.getById(id);
         this.user.set(userData);
-        console.log('Datos del usuario capturados', this.user());
       } catch (error) {
-        console.error('Error al obtener el usuario:', error);
+        console.error({ "error": "No se ha podido recuperar el usuario" });
+        Swal.fire('Error', 'No se ha podido recuperar el usuario', 'error');
       }
     });
   }
@@ -48,10 +48,24 @@ export class UserViewComponent {
         if (result.isConfirmed) {
           try {
             await this.usersService.delete(currentUser._id!);
-            Swal.fire('¡Borrado!', 'El usuario ha sido eliminado.', 'success');
+            Swal.fire({
+              title: '¡Borrado!',
+              text: 'El usuario ha sido eliminado.',
+              icon: 'success',
+              timer: 1500,
+              showConfirmButton: false
+            });
+
             this.router.navigate(['/home']);
           } catch (error) {
-            Swal.fire('Error', 'No se pudo eliminar el usuario', 'error');
+
+            console.error({ "error": "El usuario que intentas borrar no existe" });
+
+            Swal.fire({
+              title: 'Error al borrar',
+              text: 'El usuario que intentas borrar no existe',
+              icon: 'error'
+            });
           }
         }
       });

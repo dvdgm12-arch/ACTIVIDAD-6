@@ -49,26 +49,44 @@ export class UserFormComponent {
 
   async onSubmit() {
     if (this.isUpdate) {
-      await this.usersService.update(this.userForm.value);
-      Swal.fire({
-        title: '¡Actualizado!',
-        text: 'El usuario ha sido modificado con éxito',
-        icon: 'success',
-        confirmButtonColor: '#0d6efd'
-      }).then(() => {
-        this.router.navigate(['/home']); // Navegamos también al actualizar
-      });
+      try {
+        await this.usersService.update(this.userForm.value);
+
+        Swal.fire({
+          title: '¡Actualizado!',
+          text: 'El usuario ha sido modificado con éxito',
+          icon: 'success',
+          confirmButtonColor: '#0d6efd'
+        }).then(() => {
+          this.router.navigate(['/home']);
+        });
+
+      } catch (error) {
+        console.error({ "error": "El usuario que intentas editar no existe" });
+        Swal.fire({
+          title: 'Error al editar',
+          text: 'El usuario que intentas editar no existe',
+          icon: 'error'
+        });
+      }
 
     } else {
-      await this.usersService.create(this.userForm.value);
-      Swal.fire({
-        title: '¡Registrado!',
-        text: 'Usuario creado correctamente en el HUB',
-        icon: 'success',
-        confirmButtonColor: '#198754'
-      }).then(() => {
-        this.router.navigate(['/home']);
-      });
+      try {
+        await this.usersService.create(this.userForm.value);
+
+        Swal.fire({
+          title: '¡Registrado!',
+          text: 'Usuario creado correctamente en el HUB',
+          icon: 'success',
+          confirmButtonColor: '#198754'
+        }).then(() => {
+          this.router.navigate(['/home']);
+        });
+
+      } catch (error) {
+        console.error('Error al crear usuario:', error);
+        Swal.fire('Error', 'No se ha podido crear el usuario', 'error');
+      }
     }
   }
 }
