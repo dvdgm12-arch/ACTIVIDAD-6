@@ -3,6 +3,8 @@ import { IUser } from '../../interfaces/user.interface';
 import { RouterLink } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 
+declare var Swal: any;
+
 @Component({
   selector: 'app-user-card',
   imports: [RouterLink],
@@ -14,14 +16,29 @@ export class UserCardComponent {
   private usersService = inject(UsersService);
 
   async onBorrarClick() {
-    if (confirm(`¿Seguro que quieres borrar a ${this.myUser.first_name}?`)) {
-      try {
-        await this.usersService.delete(this.myUser._id!);
-        alert('Usuario eliminado con éxito');
-
-      } catch (error) {
-        console.error(error);
+    Swal.fire({
+      title: '¿Eliminar usuario?',
+      text: `¿Seguro que quieres borrar a ${this.myUser.first_name}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#dc3545',
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar'
+    }).then(async (result: any) => {
+      if (result.isConfirmed) {
+        try {
+          await this.usersService.delete(this.myUser._id!);
+          Swal.fire({
+            title: '¡Eliminado!',
+            text: 'Usuario borrado correctamente',
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false
+          });
+        } catch (error) {
+          Swal.fire('Error', 'No se pudo eliminar', 'error');
+        }
       }
-    }
+    });
   }
 }

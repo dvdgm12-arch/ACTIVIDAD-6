@@ -3,6 +3,8 @@ import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { IUser } from '../../interfaces/user.interface';
 
+declare var Swal: any;
+
 @Component({
   selector: 'app-user-view',
   imports: [RouterLink],
@@ -31,23 +33,28 @@ export class UserViewComponent {
 
   async borrarUsuario() {
     const currentUser = this.user();
-
     if (currentUser && currentUser._id) {
-      const seguro = confirm(`¿Estás seguro de que quieres eliminar a ${currentUser.first_name}?`);
-      if (seguro) {
-        try {
-          await this.usersService.delete(currentUser._id);
-          alert('AppUsers: Usuario eliminado con éxito');
-          this.router.navigate(['/home']);
-        } catch (error) {
-          console.error('Error al borrar:', error);
+
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: `Vas a eliminar a ${currentUser.first_name}. Esta acción no se puede deshacer.`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Sí, borrar',
+        cancelButtonText: 'Cancelar'
+      }).then(async (result: any) => {
+        if (result.isConfirmed) {
+          try {
+            await this.usersService.delete(currentUser._id!);
+            Swal.fire('¡Borrado!', 'El usuario ha sido eliminado.', 'success');
+            this.router.navigate(['/home']);
+          } catch (error) {
+            Swal.fire('Error', 'No se pudo eliminar el usuario', 'error');
+          }
         }
-      }
+      });
     }
   }
 }
-
-
-
-
-

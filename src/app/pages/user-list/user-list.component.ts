@@ -3,6 +3,8 @@ import { UserCardComponent } from '../../components/user-card/user-card.componen
 import { UsersService } from '../../services/users.service';
 import { IUser, IUserResponse } from '../../interfaces/user.interface';
 
+declare var Swal: any;
+
 @Component({
   selector: 'app-user-list',
   imports: [UserCardComponent],
@@ -17,7 +19,7 @@ export class UserListComponent implements OnInit {
   async ngOnInit() {
     try {
       const response: IUserResponse = await this.usersService.getAll();
-      
+
       if (response && response.results) {
         this.arrUsers.set(response.results);
         console.log('¡Usuarios cargados con éxito!', this.arrUsers.length);
@@ -28,16 +30,31 @@ export class UserListComponent implements OnInit {
   }
 
   async borrarUsuario(id: string, nombre: string) {
-    if (confirm(`¿Seguro que quieres borrar a ${nombre}?`)) {
-      try {
-        await this.usersService.delete(id);
-        
-        this.arrUsers.update(users => users.filter(user => user._id !== id));
-        
-        alert('Usuario eliminado (Simulado)');
-      } catch (error) {
-        console.error('Error al borrar:', error);
+    Swal.fire({
+      title: 'Atención',
+      text: `¿Deseas eliminar a ${nombre} del listado?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'Borrar'
+    }).then(async (result: any) => {
+      if (result.isConfirmed) {
+        try {
+          await this.usersService.delete(id);
+
+          this.arrUsers.update(users => users.filter(user => user._id !== id));
+
+          Swal.fire({
+            title: 'AppUsers',
+            text: 'Usuario eliminado del HUB',
+            icon: 'success',
+            timer: 1000,
+            showConfirmButton: false
+          });
+        } catch (error) {
+          Swal.fire('Error', 'El servidor no respondió correctamente', 'error');
+        }
       }
-    }
+    });
   }
 }

@@ -5,6 +5,8 @@ import { IUser } from '../../interfaces/user.interface';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
+declare var Swal: any;
+
 @Component({
   selector: 'app-user-form',
   imports: [RouterLink, ReactiveFormsModule],
@@ -46,21 +48,27 @@ export class UserFormComponent {
   }
 
   async onSubmit() {
-    if (this.userForm.valid) {
-      try {
-        if (this.isUpdate) {
-          // Lógica de Actualizar (PUT)
-          await this.usersService.update(this.userForm.value);
-          alert('Usuario actualizado correctamente (Mock)');
-        } else {
-          // Lógica de Crear (POST)
-          await this.usersService.create(this.userForm.value);
-          alert('Usuario creado correctamente (Mock)');
-        }
+    if (this.isUpdate) {
+      await this.usersService.update(this.userForm.value);
+      Swal.fire({
+        title: '¡Actualizado!',
+        text: 'El usuario ha sido modificado con éxito',
+        icon: 'success',
+        confirmButtonColor: '#0d6efd'
+      }).then(() => {
+        this.router.navigate(['/home']); // Navegamos también al actualizar
+      });
+
+    } else {
+      await this.usersService.create(this.userForm.value);
+      Swal.fire({
+        title: '¡Registrado!',
+        text: 'Usuario creado correctamente en el HUB',
+        icon: 'success',
+        confirmButtonColor: '#198754'
+      }).then(() => {
         this.router.navigate(['/home']);
-      } catch (error) {
-        console.error('Error en la operación:', error);
-      }
+      });
     }
   }
 }
