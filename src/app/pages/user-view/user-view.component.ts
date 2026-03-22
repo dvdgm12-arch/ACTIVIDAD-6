@@ -1,7 +1,9 @@
-import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { IUser } from '../../interfaces/user.interface';
+
+declare var Swal: any;
 
 @Component({
   selector: 'app-user-view',
@@ -13,48 +15,60 @@ export class UserViewComponent {
   private usersService = inject(UsersService);
   private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);
-  private cdr = inject(ChangeDetectorRef);
 
-  user!: IUser;
+  user = signal<IUser | undefined>(undefined);
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(async (params: any) => {
       const id = params.iduser;
-      this.user = await this.usersService.getById(id);
-
       try {
-        this.user = await this.usersService.getById(id);
-
-        this.cdr.detectChanges();
-
-        console.log('Datos del usuario capturados', this.user);
+        const userData = await this.usersService.getById(id);
+        this.user.set(userData);
       } catch (error) {
-        console.error('Error al obtener el usuario:', error);
+        console.error({ "error": "No se ha podido recuperar el usuario" });
+        Swal.fire('Error', 'No se ha podido recuperar el usuario', 'error');
       }
     });
   }
 
   async borrarUsuario() {
-    if (this.user && this.user._id) {
+    const currentUser = this.user();
+    if (currentUser && currentUser._id) {
 
-      const seguro = confirm(`¿Estás seguro de que quieres eliminar a ${this.user.first_name}?`);
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: `Vas a eliminar a ${currentUser.first_name}. Esta acción no se puede deshacer.`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Sí, borrar',
+        cancelButtonText: 'Cancelar'
+      }).then(async (result: any) => {
+        if (result.isConfirmed) {
+          try {
+            await this.usersService.delete(currentUser._id!);
+            Swal.fire({
+              title: '¡Borrado!',
+              text: 'El usuario ha sido eliminado.',
+              icon: 'success',
+              timer: 1500,
+              showConfirmButton: false
+            });
 
-      if (seguro) {
-        try {
-          await this.usersService.delete(this.user._id);
+            this.router.navigate(['/home']);
+          } catch (error) {
 
-          alert('Usuario eliminado con éxito');
-          this.router.navigate(['/home']);
+            console.error({ "error": "El usuario que intentas borrar no existe" });
 
-        } catch (error) {
-          console.error('Error al borrar:', error);
-          alert('Hubo un error al intentar eliminar el usuario');
+            Swal.fire({
+              title: 'Error al borrar',
+              text: 'El usuario que intentas borrar no existe',
+              icon: 'error'
+            });
+          }
         }
-      }
+      });
     }
   }
 }
-
-
-
-
