@@ -22,7 +22,8 @@ export class UserListComponent implements OnInit {
 
       if (response && response.results) {
         this.arrUsers.set(response.results);
-        console.log('¡Usuarios cargados con éxito!', this.arrUsers.length);
+        console.log('¡Usuarios cargados con éxito!', this.arrUsers());
+        console.table(this.arrUsers());
       }
     } catch (error) {
       console.error('Error al conectar con la API:', error);
