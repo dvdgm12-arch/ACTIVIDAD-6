@@ -82,3 +82,5 @@ Actualización del usuario reutilizando el componente formulario del registro y 
 - Si genero o borro un usuario que aparezca en el array de la consola... sino no vale
 
 - SWEET ALERT PARA NEWUSER ACTUALIZAR Y BORRAR
+
+- USAR SIGNAL EN LUGAR DE VARIABLE CON DATO PARA EVITAR CDR
